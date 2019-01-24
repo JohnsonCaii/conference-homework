@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import logging
 from typing import List
 
@@ -34,7 +35,8 @@ def is_allow_talk_length_suffix(talk_length: str) -> bool:
 def build_talk_object(talk_name: str) -> Talk:
     split_talk_name: List[str] = talk_name.strip().split(' ')
     duration_time = split_talk_name[-1]
-    assert is_allow_talk_length_suffix(duration_time)
+    if not is_allow_talk_length_suffix(duration_time):
+        raise RuntimeError('unknown duration_time')
 
     if duration_time.endswith('min'):
         cost_time = int(duration_time[0:-3])
@@ -44,7 +46,9 @@ def build_talk_object(talk_name: str) -> Talk:
         raise RuntimeError('unknown duration_time')
 
     title = ' '.join(split_talk_name[0:-1])
-    assert no_numbers_in_talk_title(title)
+    if not no_numbers_in_talk_title(title):
+        raise RuntimeError('invalid talk title')
+
     return Talk(title=title, duration_time=duration_time, cost_time=cost_time)
 
 

@@ -107,7 +107,7 @@ def arrange_talk_by_session_time(*, session_start_time: int,
             break
 
 
-def transform_datetime_to_hour_minutes_format(source_datetime: datetime):
+def transform_datetime_to_hour_minutes_format(source_datetime: datetime) -> str:
     return source_datetime.strftime('%I:%M%p')
 
 

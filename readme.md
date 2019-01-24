@@ -23,5 +23,5 @@ $ python conference.py
 ### Run all tests
 ```
 $ cd code_base_dir/src
-$ pytest ../test/
+$ pytest ../test/ -v
 ```

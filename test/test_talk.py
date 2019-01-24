@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import logging
 
 import pytest
@@ -23,6 +24,14 @@ def test_build_talk_object():
     assert talk.title == 'Writing Fast Tests Against Enterprise Rails'
     assert talk.duration_time == '60min'
     assert talk.cost_time == 60
+
+
+def test_build_talk_object_with_invalid_param():
+    with pytest.raises(RuntimeError):
+        build_talk_object("Writing Fast Tests Against Enterprise Rails 60minss")
+
+    with pytest.raises(RuntimeError):
+        build_talk_object("000 Writing Fast Tests Against Enterprise Rails 60min")
 
 
 def test_get_total_talk_time():

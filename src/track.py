@@ -1,13 +1,14 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
+from enum import (
+    Enum,
+    auto,
+)
 from typing import List
 
 from dataclasses import dataclass
 
 from talk import Talk
-from enum import (
-    Enum,
-    auto,
-)
 
 morning_session_duration_time = 180
 morning_session_start_time = datetime.now().replace(hour=9, minute=0, second=0)
